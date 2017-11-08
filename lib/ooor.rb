@@ -136,7 +136,7 @@ module Ooor
   end
   
   if defined?(Rails) #Optional autoload in Rails:
-    if Rails.version[0] == "3"[0] #Rails 3 bootstrap
+    if Rails.version[0].to_i >= 3[0] #Rails 3 bootstrap
       class Railtie < Rails::Railtie
         initializer "ooor.middleware" do |app|
           Ooor.default_config = Ooor.load_config(false, Rails.env)
